@@ -1,0 +1,28 @@
+.cart {
+  @include clearfix();
+  @include span(full);
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: z('cart');
+  width: 100%;
+  height: auto;
+  padding-top: $spacing-sm;
+  padding-bottom: $spacing-md;
+  white-space: nowrap;
+  background: $page-section-bg-color;
+  border-top: $base-border-style;
+}
+
+.cart__total {
+  text-align: right;
+}
+
+.cart__total-amt {
+  @include responsive-font('xl');
+}
+
+.cart__total-desc {
+  @include alt-copy('md');
+}

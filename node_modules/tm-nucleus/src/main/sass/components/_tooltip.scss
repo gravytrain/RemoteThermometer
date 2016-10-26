@@ -1,0 +1,79 @@
+.tooltip {
+  @include drop-shadow();
+  @include tooltip-position('bottom');
+
+  position: relative;
+  background-color: $tooltip-color;
+  border-radius: $base-border-radius;
+
+  &:after {
+    position: absolute;
+    display: block;
+    width: $tooltip-caret;
+    height: $tooltip-caret;
+    background-color: $tooltip-color;
+    content: '';
+    transform: rotate(45deg);
+
+    @include breakpoint($bp-md) {
+      width: $tooltip-caret-lg;
+      height: $tooltip-caret-lg;
+    }
+  }
+}
+
+.tooltip--right {
+  @include tooltip-position('right');
+}
+
+.tooltip--left {
+  @include tooltip-position('left');
+}
+
+.tooltip--top {
+  @include tooltip-position('top');
+}
+
+.tooltip--ism {
+  width: $ism-tooltip-width;
+
+  @include breakpoint($bp-md) {
+    width: $ism-tooltip-width + 20;
+  }
+}
+
+.tooltip__content {
+  @include inner-spacing($spacing-sm);
+  @include responsive-font('sm');
+}
+
+.tooltip__srs {
+  @include outer-spacing($bottom: -($spacing-sm));
+  @include inner-spacing($bottom: $spacing-sm);
+
+  border-bottom: $base-border-style;
+}
+
+.tooltip__delimited-list {
+  @include inner-spacing($right: $spacing-sm, $left: $spacing-sm);
+  @include responsive-font('sm');
+
+  margin-bottom: 0;
+}
+
+.tooltip__delimited-list + .tooltip__content {
+  @include outer-spacing($right: $spacing-sm, $left: $spacing-sm);
+
+  padding-right: 0;
+  padding-left: 0;
+  border-top: $base-border-style;
+}
+
+.tooltip--ism__subtotal {
+  @include responsive-font('xl');
+}
+
+.tooltip__legal {
+  @include inner-spacing($right: $spacing-sm, $bottom: $spacing-sm, $left: $spacing-sm);
+  @include responsive-font('xs');
+}

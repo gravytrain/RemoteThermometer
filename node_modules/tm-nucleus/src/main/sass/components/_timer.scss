@@ -1,0 +1,70 @@
+
+$timer-duration: 30s;
+
+.timer {
+  position: relative;
+  width: $timer-size;
+  height: $timer-size;
+  margin: auto;
+  background-color: $header-color;
+
+  @include breakpoint($bp-lg) {
+    width: $timer-size-lg;
+    height: $timer-size-lg;
+  }
+}
+
+.timer__indicator {
+  @include responsive-font('sm');
+  @include vertically-center(absolute);
+
+  z-index: z('timer-indicator');
+  width: 100%;
+  color: $white;
+  text-align: center;
+}
+
+.timer__spinner {
+  @include timer-base($white);
+
+  z-index: z('timer-spinner');
+  border-right: 0;
+  border-radius: 100% 0 0 100% / 50% 0 0 50%;
+  animation: timer-rota $timer-duration linear infinite;
+}
+
+.timer__filler {
+  @include timer-base($white);
+
+  left: 50%;
+  z-index: z('timer-filler');
+  border-left: 0;
+  border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+  opacity: 0;
+  animation: timer-opa $timer-duration steps(1, end) infinite reverse;
+}
+
+.timer__bg {
+  width: 100%;
+  height: 100%;
+  background-color: $transparent-color;
+  border: $timer-border-thickness solid rgba($white, $timer-opacity);
+  border-radius: 100%;
+  opacity: 1;
+}
+
+.timer__mask {
+  @include timer-base(rgba($white, $timer-opacity));
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: z('timer-mask');
+  width: 50%;
+  height: 100%;
+  background-color: $header-color;
+  border-right: 0;
+  border-radius: 200% 0 0 200% / 100%;
+  opacity: 1;
+  animation: timer-opa $timer-duration steps(1, end) infinite;
+}

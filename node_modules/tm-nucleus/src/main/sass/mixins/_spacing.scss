@@ -1,0 +1,24 @@
+@mixin outer-spacing($val: false, $top: 0, $right: 0, $bottom: 0, $left: 0) {
+  @include set-spacing('margin', $val, $top, $right, $bottom, $left);
+}
+
+@mixin inner-spacing($val: false, $top: 0, $right: 0, $bottom: 0, $left: 0) {
+  @include set-spacing('padding', $val, $top, $right, $bottom, $left);
+}
+
+@mixin set-spacing($type, $val, $top, $right, $bottom, $left) {
+  @if ($val and $val != 'custom') {
+    #{$type}: $val;
+
+    @include breakpoint($bp-md) {
+      #{$type}: increase-spacing($val);
+    }
+  }
+  @else {
+    #{$type}: $top $right $bottom $left;
+
+    @include breakpoint($bp-md) {
+      #{$type}: increase-spacing($top) increase-spacing($right) increase-spacing($bottom) increase-spacing($left);
+    }
+  }
+}

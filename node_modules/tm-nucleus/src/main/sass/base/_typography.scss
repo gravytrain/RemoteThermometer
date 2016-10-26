@@ -1,0 +1,171 @@
+// TM Sans font
+@font-face {
+  font-family: 'TM Sans';
+  src: url('../font/TMSans-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'TM Sans';
+  src: url('../font/TMSans-Bold.woff') format('woff');
+  font-weight: bold;
+}
+
+// return responsive font size
+@function get-quart-size($num) {
+  @return $num + $font-size-factor;
+}
+
+@function get-gallon-size($num) {
+  @return $num + ($font-size-factor * 2);
+}
+
+// set default line height or custom
+@function get-lh($font, $lh) {
+  $val: $lh;
+  @if not $lh {
+    $val: calc-lh($font);
+  }
+  @return $val;
+}
+
+// calculate line height based on font size
+@function calc-lh($font-size) {
+  $lh: $header-line-height;
+  @if ($font-size < 1.8) {
+    $lh: $base-line-height;
+  }
+  @return $lh;
+}
+
+// retrieve font-size
+@function fetch-font($set, $size: 'pint') {
+  @return map-get(map-get($font-sizes, $set), $size);
+}
+
+$tm-sans: 'TM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$monospace: Menlo, Consolas, 'Courier New', monospace;
+
+// Typography settings
+$base-font-family: $tm-sans;
+$base-line-height: 1.4;
+$header-line-height: 1.2;
+$header-margin: 10px;
+
+// Default font sizes
+$default-font-size: 16px; // for media queries
+$base-font-size: 62.5%;   // == 10px
+$font-size-factor: 0.2;
+
+// Base font sizes
+// DO NOT use these variables elsewhere
+// See styleguide for documentation on defining font-sizes
+$base-xs-font: 1rem;
+$base-sm-font: 1.2rem;
+$base-md-font: 1.4rem;
+$base-lg-font: 1.8rem;
+$base-xl-font: 2.2rem;
+$base-xxl-font: 2.6rem;
+$base-xxxl-font: 4rem;
+
+// Other font sizes
+$body-font-size: $base-md-font;
+$min-input-font-size: 1.6rem; // min required to avoid iOS zooming
+
+// Font sizes
+$font-sizes: (
+  'xs': (
+    'pint':   $base-xs-font,
+    'quart':  $base-xs-font,
+    'gallon': get-quart-size($base-xs-font)
+  ),
+  'sm': (
+    'pint':   $base-sm-font,
+    'quart':  get-quart-size($base-sm-font),
+    'gallon': get-gallon-size($base-sm-font)
+  ),
+  'md': (
+    'pint':   $base-md-font,
+    'quart':  get-quart-size($base-md-font),
+    'gallon': get-gallon-size($base-md-font)
+  ),
+  'lg': (
+    'pint':   $base-lg-font,
+    'quart':  get-quart-size($base-lg-font),
+    'gallon': get-gallon-size($base-lg-font)
+  ),
+  'xl': (
+    'pint':   $base-xl-font,
+    'quart':  get-quart-size($base-xl-font),
+    'gallon': get-gallon-size($base-xl-font)
+  ),
+  'xxl': (
+    'pint':   $base-xxl-font,
+    'quart':  get-quart-size($base-xxl-font),
+    'gallon': get-gallon-size($base-xxl-font)
+  ),
+  'xxxl': (
+    'pint':   $base-xxxl-font,
+    'quart':  get-quart-size($base-xxxl-font),
+    'gallon': get-gallon-size($base-xxxl-font)
+  )
+);
+
+// Baseline for page
+html {
+  font-size: $base-font-size;
+  color: $text-color;
+}
+
+body {
+  font-family: $base-font-family;
+  -webkit-font-smoothing: antialiased;
+  line-height: $base-line-height;
+  color: $text-color;
+
+  background-color: $white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+
+  line-height: $header-line-height;
+  text-rendering: optimizeLegibility; // Fix the character spacing for headings
+}
+
+p {
+  margin: 0 0 1em;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+strong {
+  font-weight: bold;
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+
+  &:active,
+  &:hover {
+    color: $link-hover-color;
+    text-decoration: underline;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+abbr {
+  text-decoration: none;
+
+  border-bottom: 0;
+}

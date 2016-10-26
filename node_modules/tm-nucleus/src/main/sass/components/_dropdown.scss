@@ -1,0 +1,58 @@
+.dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.dropdown__icon-chevron {
+  @include icon($icon-color, $dropdown-chevron-size, $dropdown-chevron-size);
+
+  position: absolute;
+  right: 10px;
+  bottom: 15px;
+}
+
+.dropdown__select {
+  @include responsive-font('lg');
+
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: $input-height;
+  padding: 20px ($dropdown-chevron-size + 19px) 0 10px;
+  color: $text-color;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  border-bottom: $input-border-style;
+  border-radius: 0;
+  appearance: none;
+
+  &:focus,
+  &:active {
+    border-bottom: $focused-border-style;
+    outline: 0;
+  }
+
+  &:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 $text-color;
+  }
+
+  &:focus ~ .dropdown__icon-chevron,
+  &:active ~ .dropdown__icon-chevron {
+    fill: $primary-button-color;
+  }
+}
+
+.dropdown__select.is-error-field {
+  border-bottom: $alert-border-style;
+}
+
+.dropdown__select.is-error-field ~ .input-group__label,
+.dropdown__select.is-error-field ~ .input-group__label .input-group__required {
+  color: $alert-color;
+}
+
+.dropdown__select.is-error-field ~ .dropdown__icon-chevron {
+  fill: $alert-color;
+}

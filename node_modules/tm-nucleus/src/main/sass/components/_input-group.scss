@@ -1,0 +1,75 @@
+.input-group {
+  @include clearfix();
+
+  position: relative;
+}
+
+.input-group__label {
+  @include responsive-font('lg');
+
+  position: absolute;
+  bottom: $input-label-bottom;
+  left: $textfield-gutter-left;
+  color: $label-color;
+  pointer-events: none;
+  transition: $form-label-animation;
+}
+
+.input-group__text-field {
+  @include responsive-font('lg');
+  @include textfield-underline();
+
+  height: $input-height;
+  padding-bottom: 0;
+  padding-left: $textfield-gutter-left;
+  color: $text-color;
+
+  &:focus,
+  &:active {
+    @include textfield-active();
+  }
+}
+
+.input-group.is-error-field {
+  height: 44px;
+  padding-top: 18px;
+  margin-top: 0;
+  border-radius: 0;
+
+  @include breakpoint($bp-md) {
+    border-radius: 5px;
+  }
+}
+
+.input-group__tooltip {
+  position: absolute;
+  top: -10px;
+  right: 7px;
+
+  @include breakpoint($bp-md) {
+    right: -20px;
+  }
+}
+
+.input-group__required {
+  color: $link-color;
+}
+
+// Toggle States
+.input-group__text-field.has-content + .input-group__label,
+.dropdown__select.has-content + .input-group__label {
+  @include form-label();
+
+  bottom: $input-label-bottom-active;
+}
+
+.input-group__text-field:active + .input-group__label,
+.input-group__text-field.has-content:active + .input-group__label,
+.input-group__text-field:focus + .input-group__label,
+.input-group__text-field.has-content:focus + .input-group__label,
+.dropdown__select.has-content:active + .input-group__label,
+.dropdown__select.has-content:focus + .input-group__label {
+  @include form-label($label-color);
+
+  bottom: $input-label-bottom-active;
+}

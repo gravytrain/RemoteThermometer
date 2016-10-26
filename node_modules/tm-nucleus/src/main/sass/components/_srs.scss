@@ -1,0 +1,44 @@
+// srs = sec row seat
+.srs {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  min-width: $srs-min-width;
+}
+
+.srs__set {
+  flex: 1 1 auto;
+  text-align: center;
+
+  &:first-child {
+    text-align: left;
+  }
+
+  &:last-child:not(:first-child) {
+    text-align: right;
+  }
+}
+
+.srs__label,
+.srs__value {
+  display: block;
+}
+
+.srs__label {
+  @include responsive-font('sm', 1);
+
+  font-weight: normal;
+  color: $alt-text-color;
+  text-transform: uppercase;
+}
+
+.srs__value {
+  @include responsive-font('xl', 1);
+
+  font-weight: bold;
+  color: $text-color;
+}
+
+.srs__ga {
+  display: block;
+}

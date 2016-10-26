@@ -1,0 +1,22 @@
+// standard buttons are 44px height
+.button {
+  @include btn($primary-button-color, $hoverstate: true);
+}
+
+// call to action buttons
+// reserved for buttons that lead to / are part of checkout
+.button--cta {
+  @include btn-color($cta-button-color, $white, $hoverstate: true);
+
+  font-weight: bold;
+}
+
+.button--static {
+  padding: 0 20px;
+}
+
+.button--full {
+  @include breakpoint($max: $bp-md - 1) {
+    width: 100%;
+  }
+}

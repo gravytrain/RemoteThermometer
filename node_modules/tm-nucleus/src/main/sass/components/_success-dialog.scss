@@ -1,0 +1,23 @@
+.success-dialog {
+  border: $success-border-style;
+}
+
+.success-dialog__header {
+  background-color: $success-color;
+}
+
+.success-dialog__title {
+  @include dialog-title('sm');
+}
+
+.success-dialog__title-icon {
+  @include dialog-title-icon();
+}
+
+.success-dialog__title-text {
+  @include dialog-title-text();
+}
+
+.success-dialog__content {
+  @include dialog-content();
+}

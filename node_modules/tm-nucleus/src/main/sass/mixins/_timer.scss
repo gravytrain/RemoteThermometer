@@ -1,0 +1,8 @@
+@mixin timer-base($color) {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  transform-origin: 100% 50%;
+  background-color: $transparent-color;
+  border: $timer-border-thickness solid $color;
+}

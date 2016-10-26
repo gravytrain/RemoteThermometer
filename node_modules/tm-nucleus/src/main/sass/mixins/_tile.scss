@@ -1,0 +1,6 @@
+@mixin tile() {
+  border-radius: $base-border-radius;
+  border: $input-border-style;
+
+  @include outer-spacing($bottom: $spacing-md);
+}

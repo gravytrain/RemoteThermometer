@@ -1,0 +1,187 @@
+// scss-lint:disable VariableForProperty
+// Disable linter because we're passing in the color as a variable, so we need
+// to call the get-darker/lighter functions dynamically instead of with set vars
+
+// mixin to create buttons
+@mixin btn($color: $primary-button-color, $txtcolor: $white, $height: $button-height, $hoverstate: false, $outlined: false) {
+  @include btn-base($height);
+
+  @if not $outlined {
+    @include btn-color($color, $txtcolor, $hoverstate: $hoverstate);
+  }
+  @else {
+    @include btn-outlined($color, $hoverstate: $hoverstate);
+  }
+}
+
+// shared base for buttons
+@mixin btn-base($height) {
+  @include responsive-font('md', $height);
+
+  display: inline-block;
+  min-height: $height;
+  padding: 0 $button-padding;
+  font-weight: normal;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border-radius: $button-border-radius;
+  box-shadow: none;
+  cursor: pointer;
+
+  @include breakpoint($bp-md) {
+    min-height: $button-height-lg;
+    padding: 0 $button-padding-lg;
+    line-height: $button-height-lg;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// set the button color
+@mixin btn-color($bgcolor, $txtcolor, $hoverstate: false) {
+  color: $txtcolor;
+  background-color: $bgcolor;
+  border: 0;
+
+  @if $hoverstate {
+    &:active,
+    &:focus,
+    &:hover {
+      color: $txtcolor;
+    }
+
+    &:active {
+      background-color: get-darker($bgcolor);
+    }
+
+    @include breakpoint($bp-lg) {
+      &:focus,
+      &:hover {
+        color: $txtcolor;
+        background: get-darker($bgcolor);
+      }
+    }
+  }
+
+  &[disabled] {
+    @include btn-disabled($bgcolor);
+  }
+}
+
+// set the outlined color
+@mixin btn-outlined($color, $hoverstate: false) {
+  color: $color;
+  background-color: $white;
+  border: 1px solid $color;
+
+  @if $hoverstate {
+    &:active {
+      color: get-darker($color);
+      border-color: get-darker($color);
+    }
+
+    @include breakpoint($bp-lg) {
+      &:focus,
+      &:hover {
+        color: get-darker($color);
+        border-color: get-darker($color);
+      }
+    }
+  }
+
+  &[disabled] {
+    @include btn-disabled($color, $outlined: true);
+  }
+}
+
+// set disabled color
+@mixin btn-disabled($color, $outlined: false) {
+  @if not $outlined {
+    background-color: get-lighter($color);
+  }
+  @else {
+    color: get-lighter($color);
+    border-color: get-lighter($color);
+  }
+}
+
+// unstyled button
+@mixin unbutton($txtcolor: $link-color, $padding: $button-padding, $nowrap: 'nowrap') {
+  padding: 0 $padding;
+  font-weight: normal;
+  color: $txtcolor;
+  text-align: center;
+  background-color: $transparent-color;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+
+  @if ($nowrap == 'nowrap') {
+    white-space: nowrap;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// icon button
+@mixin icon-button() {
+  @include unbutton($padding: 0);
+
+  line-height: 0;
+}
+
+// toggle switch mixins
+
+// styles toggle switch button
+
+@mixin toggle-switch-button() {
+  @include unbutton($padding: 0);
+  @include fixed-font('sm');
+  @include toggle-switch-color();
+
+  position: relative;
+  height: $toggle-switch-button-size;
+  min-width: $toggle-switch-button-size * 2;
+  overflow: hidden;
+  font-weight: bold;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border-radius: 40px;
+}
+
+// sets toggle switch color
+
+@mixin toggle-switch-color($color: $toggle-switch-off-bg-color) {
+  color: $toggle-switch-indicator-bg-color;
+  box-shadow: inset 0 1px 10px get-darker($color);
+  background-color: $color;
+}
+
+// styles inner elements of the toggle switch
+
+@mixin toggle-switch-element($padding, $width: auto, $is-indicator: false) {
+  display: inline-block;
+  padding: $padding;
+  vertical-align: top;
+  overflow: hidden;
+
+  @if $is-indicator {
+    position: absolute;
+    top: 1px;
+    width: $width;
+    height: $width;
+    background-color: $white;
+    border-radius: 100%;
+  }
+
+  @else {
+    width: $width;
+    height: $toggle-switch-button-size;
+  }
+}

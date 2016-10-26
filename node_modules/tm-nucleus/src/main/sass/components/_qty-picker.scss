@@ -1,0 +1,71 @@
+.qty-picker {
+  font-size: 0;
+  white-space: nowrap;
+}
+
+.qty-picker__button {
+  @include unbutton($padding: 0);
+
+  width: $qty-picker-button-size;
+  height: $qty-picker-button-size;
+  line-height: 0;
+  background: $qty-increment-button-color;
+  border-radius: 100%;
+
+  @include breakpoint($bp-lg) {
+    &:focus,
+    &:hover {
+      background: $qty-increment-button-hover-color;
+    }
+  }
+
+  &:active {
+    background: $qty-increment-button-hover-color;
+  }
+}
+
+.qty-picker__button--decrement {
+  background: $qty-decrement-button-color;
+
+  @include breakpoint($bp-lg) {
+    &:focus,
+    &:hover {
+      background: $qty-decrement-button-hover-color;
+    }
+  }
+
+  &:active {
+    background: $qty-decrement-button-hover-color;
+  }
+}
+
+.qty-picker__button--decrement.is-disabled,
+.qty-picker__number--disabled {
+  visibility: hidden;
+}
+
+.qty-picker__button.is-disabled {
+  background: $qty-increment-button-disabled-color;
+}
+
+.qty-picker__icon-minus,
+.qty-picker__icon-plus {
+  width: 18px;
+  height: 18px;
+  fill: $white;
+}
+
+.qty-picker__number {
+  @include responsive-font('xl', $qty-picker-button-size);
+
+  display: inline-block;
+  width: $qty-picker-button-size;
+  height: $qty-picker-button-size;
+  color: $text-color;
+  text-align: center;
+  vertical-align: top;
+
+  &:hover {
+    text-decoration: none;
+  }
+}

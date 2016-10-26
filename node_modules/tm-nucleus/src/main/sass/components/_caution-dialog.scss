@@ -1,0 +1,23 @@
+.caution-dialog {
+  border: $caution-border-style;
+}
+
+.caution-dialog__header {
+  background-color: $caution-dialog-color;
+}
+
+.caution-dialog__title {
+  @include dialog-title('sm');
+}
+
+.caution-dialog__title-icon {
+  @include dialog-title-icon();
+}
+
+.caution-dialog__title-text {
+  @include dialog-title-text();
+}
+
+.caution-dialog__content {
+  @include dialog-content();
+}

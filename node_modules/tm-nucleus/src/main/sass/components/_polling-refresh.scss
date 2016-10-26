@@ -1,0 +1,10 @@
+.polling-refresh {
+  @include polling-refresh($base-icon-size, $brand-gray);
+}
+
+.polling-refresh__filled {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: z('hide');
+}

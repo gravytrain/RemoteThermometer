@@ -1,0 +1,64 @@
+// mixins
+@mixin responsive-font($set: 'md', $lh: false) {
+  $pint: fetch-font($set);
+
+  font-size: $pint;
+  line-height: get-lh($pint, $lh);
+
+  @include breakpoint($bp-sm) {
+    $quart: fetch-font($set, 'quart');
+
+    font-size: $quart;
+    line-height: get-lh($quart, $lh);
+  }
+
+  @include breakpoint($bp-md) {
+    $gallon: fetch-font($set, 'gallon');
+
+    font-size: $gallon;
+
+    @if ($set == 'md' and not $lh) {
+      $lh: $base-line-height;
+    }
+
+    line-height: get-lh($gallon, $lh);
+  }
+}
+
+
+@mixin fixed-font($set: 'md', $lh: false) {
+  $size: fetch-font($set, 'quart');
+
+  font-size: $size;
+  line-height: get-lh($size, $lh);
+}
+
+
+@mixin hdg-text($set, $color: $text-color, $mb: $header-margin) {
+  @include responsive-font($set);
+
+  margin-bottom: $mb;
+  font-weight: bold;
+  color: $color;
+
+  @include breakpoint($bp-md) {
+    margin-bottom: $mb * 2;
+  }
+}
+
+
+@mixin alt-copy($set: false) {
+  @if $set {
+    @include responsive-font($set);
+  }
+
+  font-weight: normal;
+  color: $alt-text-color;
+}
+
+
+@mixin truncate-text() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

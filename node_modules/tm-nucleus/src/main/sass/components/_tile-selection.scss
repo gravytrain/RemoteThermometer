@@ -1,0 +1,22 @@
+.tile-selection {
+  @include tile();
+}
+
+.tile-selection__content {
+  @include inner-spacing($spacing-sm);
+
+  color: $alt-text-color;
+}
+
+.tile-selection__content:not(:first-child) {
+  border-top: $base-border-style;
+}
+
+.tile-selection--selected {
+  border: $tile-selected-style;
+}
+
+.tile-selection__selected-text {
+  font-weight: bold;
+  color: $link-color;
+}

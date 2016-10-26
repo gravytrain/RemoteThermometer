@@ -1,0 +1,11 @@
+.DS_Store
+.iml
+.idea
+lint-report.json
+node_modules
+npm-debug.log
+public/css
+public/font
+public/img
+public/js
+/.project

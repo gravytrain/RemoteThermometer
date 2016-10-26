@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, target-densitydpi=medium-dpi, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TM Nucleus</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="//s2.tmol.co/tm/4ab94a4f/static/favicon-rebrand.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="//s2.tmol.co/tm/4ab94a4f/static/favicon-rebrand.ico" type="image/x-icon">
+    <link href="css/nucleus.css" rel="stylesheet" type="text/css">
+    <link href="css/styleguide.css" rel="stylesheet" type="text/css">
+    <style>
+      .page__content {
+        margin-bottom: 10px;
+        padding: 0 15px 70px 15px;
+      }
+      .page__content:not(:first-child) {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+
+<body>
+  <div class="page__content">
+    <h1 class="sg__hdg">Cart</h1>
+    <p>By default, the Cart is fixed to the bottom of the page.</p>
+
+    <pre class="sg__sample-code">
+&lt;div class="<span class="sg__highlight-code">cart</span>"&gt;
+  &lt;div class="split-content"&gt;
+    &lt;div class="split-content__primary <span class="sg__highlight-code">cart__total</span>"&gt;
+      &lt;span class="<span class="sg__highlight-code">cart__total-amt</span>"&gt;$2309.50&lt;/span&gt;
+      &lt;span class="<span class="sg__highlight-code">cart__total-desc</span>"&gt;w/ Fees&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="split-content__secondary"&gt;
+      &lt;button class="button button--cta"&gt;Checkout&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+    </pre>
+
+    <p><a href="index.html#cart">Back to styleguide</a>.</p>
+
+    <div class="cart">
+      <div class="split-content">
+        <div class="split-content__primary cart__total">
+          <span class="cart__total-amt">$2309.50</span>
+          <span class="cart__total-desc">w/ Fees</span>
+        </div>
+        <div class="split-content__secondary">
+          <button class="button button--cta">Checkout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/vendors/svg4everybody.min.js"></script>
+  <script>svg4everybody();</script>
+
+</body>
+</html>

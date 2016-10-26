@@ -1,0 +1,32 @@
+.is-hidden {
+  display: none;
+}
+
+.is-invisible {
+  visibility: hidden;
+}
+
+.is-clickable {
+  cursor: pointer;
+}
+
+.is-scrollable {
+  overflow: auto;
+}
+
+.is-error-message {
+  color: $alert-color;
+}
+
+.is-success-message {
+  color: $success-color;
+}
+
+.is-offscreen {
+  position: absolute;
+  top: auto;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

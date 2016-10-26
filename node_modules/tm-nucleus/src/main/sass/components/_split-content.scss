@@ -1,0 +1,39 @@
+.split-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.split-content__primary {
+  flex: 1 1 100%;
+}
+
+.split-content__primary--top {
+  align-self: flex-start;
+}
+
+.split-content__secondary {
+  flex: 0 0 auto;
+  padding-left: $spacing-sm;
+
+  @include breakpoint($bp-md) {
+    padding-left: increase-spacing($spacing-sm);
+  }
+
+  // we don't want left padding if it's the first item
+  &:first-child {
+    padding-left: 0;
+  }
+}
+
+.split-content__secondary--top {
+  align-self: flex-start;
+}
+
+.split-content__secondary + .split-content__primary {
+  padding-left: $spacing-sm;
+
+  @include breakpoint($bp-md) {
+    padding-left: increase-spacing($spacing-sm);
+  }
+}
