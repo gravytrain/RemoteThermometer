@@ -1,7 +1,14 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/css/nucleus.min.css')
-  body
-    block content
+    head
+        meta(charset='utf-8')
+        title= title
+        link(rel='stylesheet', href='/stylesheets/css/bootstrap-cerulean.css')
+        link(rel='stylesheet', href='/stylesheets/css/goat-app.css')
+        link(rel='stylesheet', href='/stylesheets/css/nucleus.min.css')
+    body.page
+        include navigation
+        div.ch-container
+            include side-menu
+            block content
+

@@ -1,0 +1,23 @@
+div.navbar
+    div.navbar-inner
+        button(type='button' class='navbar-toggle pull-left')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        img.hidden-xs(src='/images/svg/ticketmaster.svg')
+        div(class='btn-group pull-right theme-container')
+            button(class='btn btn-default dropdown-toggle', data-toggle='dropdown')
+                i(class='glyphicon glyphicon-tint')
+                    span(class='hidden-sm hidden-xs') Change Theme
+                    span.caret
+            ul.dropdown-menu(id='themes')
+        div(class='btn-group pull-right theme-container')
+            button(class='btn btn-default dropdown-toggle', data-toggle='dropdown')
+                i(class='glyphicon glyphicon-user')
+                    span(class='hidden-sm hidden-xs') Account
+                    span.caret
+            ul.dropdown-menu(id='themes')
+                li
+                    a(href='#' id='preferences') Preferences
+                li
+                    a(href='#' id='logout') Logout
